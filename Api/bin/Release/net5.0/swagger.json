@@ -1,0 +1,98 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TakeApi",
+    "version": "v1"
+  },
+  "paths": {
+    "/take": {
+      "get": {
+        "tags": [
+          "Repository"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RepositoryModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/take/{id}": {
+      "get": {
+        "tags": [
+          "Repository"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RepositoryModel"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Owner": {
+      "type": "object",
+      "properties": {
+        "avatar_url": {
+          "type": "string"
+        }
+      }
+    },
+    "RepositoryModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "owner": {
+          "$ref": "#/definitions/Owner"
+        },
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
